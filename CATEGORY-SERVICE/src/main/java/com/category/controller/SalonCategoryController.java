@@ -24,7 +24,8 @@ public class SalonCategoryController {
         return ResponseEntity.ok(saveCategory);
     }
 
-    public ResponseEntity<String> deleteCategory(@PathVariable Long id , Long salonId) throws Exception {
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> deleteCategory(@PathVariable Long id) throws Exception {
         SaloneDTO saloneDTO = new SaloneDTO();
         saloneDTO.setId(1L);
         categoryService.deleteCategory(id, saloneDTO.getId());

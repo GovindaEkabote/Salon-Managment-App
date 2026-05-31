@@ -27,11 +27,11 @@ public class CategoryController {
         return ResponseEntity.ok(category);
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteCategory(@PathVariable Long id, @PathVariable Long salonId) throws Exception {
-        categoryService.deleteCategory(id, salonId);
-        return ResponseEntity.ok().build();
-    }
+//    @DeleteMapping("/{id}")
+//    public ResponseEntity<Void> deleteCategory(@PathVariable Long id, @PathVariable Long salonId) throws Exception {
+//        categoryService.deleteCategory(id, salonId);
+//        return ResponseEntity.ok().build();
+//    }
 
 
 }

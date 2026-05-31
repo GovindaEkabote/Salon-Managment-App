@@ -41,11 +41,13 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     @Override
-    public void deleteCategory(Long id, Long aLong) throws Exception {
-        Category category = categoryRepository.findById(id).orElse(null);
-        if (category.getSalonId().equals(aLong)){
-            throw new Exception("Category Not Exist with this id"+ id);
+    public void deleteCategory(Long id, Long salonId) throws Exception {
+
+        Category category = getCategoryById(id);
+        if (!category.getSalonId().equals(salonId)) {
+            throw new Exception("Unauthorized delete attempt");
         }
-        categoryRepository.delete(category);
+
+        categoryRepository.deleteById(id);
     }
 }
