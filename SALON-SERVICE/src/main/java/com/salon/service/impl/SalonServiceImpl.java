@@ -96,7 +96,4 @@ public class SalonServiceImpl implements SalonService {
         return salonRepository.save(salon);
     }
 
-
-
-
 }

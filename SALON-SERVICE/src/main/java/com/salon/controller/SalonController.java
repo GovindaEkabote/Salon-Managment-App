@@ -62,4 +62,40 @@ public class SalonController {
 
         return ResponseEntity.ok(SalonMapper.mapTODTO(salon));
     }
+
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<String> deleteSalon(@PathVariable Long id) throws Exception {
+        salonService.deleteSalon(id);
+        return ResponseEntity.ok("Salon deleted successfully");
+    }
+
+    @GetMapping("/search")
+    public ResponseEntity<List<SaloneDTO>> searchSalon(
+
+            @RequestParam(required = false) String city,
+            @RequestParam(required = false) String name,
+            @RequestParam(required = false) String address
+    ) {
+
+        List<Salon> salons;
+
+        if (city != null && name != null && address != null) {
+            salons = salonService.searchsaloneByCityAndNameAndAddress(city, name, address);
+
+        } else if (city != null && name != null) {
+            salons = salonService.searchsaloneByCityAndName(city, name);
+
+        } else if (city != null) {
+            salons = salonService.searchsaloneByCity(city);
+
+        } else {
+            salons = salonService.getAllSalons();
+        }
+
+        List<SaloneDTO> saloneDTOSList = salons.stream()
+                .map(SalonMapper::mapTODTO)
+                .toList();
+
+        return ResponseEntity.ok(saloneDTOSList);
+    }
 }
