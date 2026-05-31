@@ -8,7 +8,8 @@ import lombok.*;
 import java.time.LocalTime;
 import java.util.List;
 
-@Entity(name="salon")
+@Entity
+
 @Getter
 @Setter
 @NoArgsConstructor

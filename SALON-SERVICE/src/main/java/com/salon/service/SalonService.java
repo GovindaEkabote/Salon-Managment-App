@@ -9,8 +9,8 @@ import java.util.List;
 public interface SalonService {
 
     Salon createSalon(SaloneDTO saloneDTO , UserDTO user);
-    Salon updateSalon(SaloneDTO saloneDTO, UserDTO user, Long salonId);
-    Salon getSalonById(Long salonId);
+    Salon updateSalon(SaloneDTO saloneDTO, UserDTO user, Long salonId) throws Exception;
+    Salon getSalonById(Long salonId) throws Exception;
     List<Salon> getAllSalons();
     void deleteSalon(Long salonId);
 
