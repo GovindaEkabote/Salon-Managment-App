@@ -49,4 +49,17 @@ public class SalonController {
         SaloneDTO salonDTO1 = SalonMapper.mapTODTO(salon);
         return ResponseEntity.ok(salonDTO1);
     }
+
+    @PutMapping("/update/{id}")
+    public ResponseEntity<SaloneDTO> updateSalone(
+            @PathVariable Long id,
+            @RequestBody SaloneDTO saloneDTO) throws Exception {
+
+        UserDTO userDTO = new UserDTO();
+        userDTO.setId(1L);
+
+        Salon salon = salonService.updateSalon(saloneDTO, userDTO, id);
+
+        return ResponseEntity.ok(SalonMapper.mapTODTO(salon));
+    }
 }

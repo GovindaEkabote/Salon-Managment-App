@@ -18,22 +18,28 @@ public class SalonServiceImpl implements SalonService {
 
     @Override
     public Salon updateSalon(SaloneDTO salone, UserDTO user, Long salonId) throws Exception {
-        Salon existingSalon = salonRepository.findById(salonId).orElse(null);
-        if (existingSalon != null && salone.getOwerId().equals(user.getId())){
-            existingSalon.setCity(salone.getCity());
-            existingSalon.setAddress(salone.getAddress());
-            existingSalon.setName(salone.getName());
-            existingSalon.setImages(salone.getImages());
-            existingSalon.setEmail(salone.getEmail());
-            existingSalon.setCloseTime(salone.getCloseTime());
-            existingSalon.setOpenTime(salone.getOpenTime());
-            existingSalon.setPhoneNumber(salone.getPhoneNumber());
-            existingSalon.setOwerId(salone.getOwerId()
-            );
 
+        Salon existingSalon = salonRepository.findById(salonId)
+                .orElseThrow(() -> new Exception("Salon not found"));
+
+        // Check ownership
+        if (!existingSalon.getOwerId().equals(user.getId())) {
+            throw new Exception("Unauthorized: You are not the owner of this salon");
         }
-        throw new Exception("Salone not found");
 
+        // Update fields
+        existingSalon.setCity(salone.getCity());
+        existingSalon.setAddress(salone.getAddress());
+        existingSalon.setName(salone.getName());
+        existingSalon.setImages(salone.getImages());
+        existingSalon.setEmail(salone.getEmail());
+        existingSalon.setCloseTime(salone.getCloseTime());
+        existingSalon.setOpenTime(salone.getOpenTime());
+        existingSalon.setPhoneNumber(salone.getPhoneNumber());
+        existingSalon.setOwerId(salone.getOwerId());
+
+        // 🔥 IMPORTANT: save updated entity
+        return salonRepository.save(existingSalon);
     }
 
     @Override
