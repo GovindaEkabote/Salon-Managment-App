@@ -6,11 +6,11 @@ import com.salon.playload.dto.SaloneDTO;
 import com.salon.playload.dto.UserDTO;
 import com.salon.service.SalonService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.repository.query.Param;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/salons")
@@ -26,6 +26,26 @@ public class SalonController {
 
         Salon salon = salonService.createSalon(saloneDTO, userDTO);
 
+        SaloneDTO salonDTO1 = SalonMapper.mapTODTO(salon);
+        return ResponseEntity.ok(salonDTO1);
+    }
+
+    @GetMapping("/get/salons")
+    public ResponseEntity<List<SaloneDTO>> getAllSalon()
+    {
+        List<Salon> salons = salonService.getAllSalons();
+        List<SaloneDTO> saloneDTOSList = salons.stream()
+                .map(SalonMapper::mapTODTO).toList();
+
+        return  ResponseEntity.ok(saloneDTOSList);
+    }
+
+    @GetMapping("/get/salon/{id}")
+    public ResponseEntity<SaloneDTO> getSaloneById(@PathVariable Long id) throws Exception {
+        Salon salon = salonService.getSalonById(id);
+        if(salon == null){
+            throw new Exception("Salon Not Found");
+        }
         SaloneDTO salonDTO1 = SalonMapper.mapTODTO(salon);
         return ResponseEntity.ok(salonDTO1);
     }
