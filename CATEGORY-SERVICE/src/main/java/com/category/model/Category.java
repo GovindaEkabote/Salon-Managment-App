@@ -21,7 +21,6 @@ public class Category {
 
     private String image;
 
-    @Column(nullable = false)
     private Long salonId;
 
 

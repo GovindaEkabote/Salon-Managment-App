@@ -12,10 +12,10 @@ public interface CategoryService {
 
     Category saveCategory(Category category, SaloneDTO saloneDTO);
 
-    Set<Category> getAllCategories();
+    Set<Category> getAllCategoriesBysalone(Long id);
 
-    Category getCategoryById(Long id);
+    Category getCategoryById(Long id) throws Exception;
 
-    void deleteCategory(Long id);
+    void deleteCategory(Long id, Long salonId) throws Exception;
 
 }
