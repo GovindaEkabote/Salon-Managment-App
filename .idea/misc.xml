@@ -7,6 +7,7 @@
         <option value="$PROJECT_DIR$/SalonBookingApp/SalonBookingApp/pom.xml" />
         <option value="$PROJECT_DIR$/SALON-SERVICE/pom.xml" />
         <option value="$PROJECT_DIR$/CATEGORY-SERVICE/pom.xml" />
+        <option value="$PROJECT_DIR$/OFFERING-SERVICE/pom.xml" />
       </list>
     </option>
   </component>

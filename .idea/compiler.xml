@@ -9,7 +9,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="SalonBookingApp" />
       </profile>
-      <profile name="Annotation profile for CATEGORY-SERVICE" enabled="true">
+      <profile name="Annotation profile for OFFERING-SERVICE" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
@@ -18,12 +18,14 @@
         </processorPath>
         <module name="CATEGORY-SERVICE" />
         <module name="SALON-SERVICE" />
+        <module name="OFFERING-SERVICE" />
       </profile>
     </annotationProcessing>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="CATEGORY-SERVICE" options="-parameters" />
+      <module name="OFFERING-SERVICE" options="-parameters" />
       <module name="SALON-SERVICE" options="-parameters" />
       <module name="SalonBookingApp" options="-parameters" />
     </option>

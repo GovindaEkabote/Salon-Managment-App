@@ -2,6 +2,7 @@
 <project version="4">
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$/CATEGORY-SERVICE/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/OFFERING-SERVICE/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/SALON-SERVICE/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/SalonBookingApp/SalonBookingApp/src/main/java" charset="UTF-8" />
   </component>
