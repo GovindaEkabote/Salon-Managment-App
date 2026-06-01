@@ -13,6 +13,6 @@ public class ServiceDTO {
     private int price;
     private int duration;
     private Long salonId;
-    private Long categoryId;
+    private Long category;
     private String images;
 }
